@@ -25,7 +25,6 @@ use Bolt\Boltpay\Helper\Bugsnag;
 use Bolt\Boltpay\Helper\Log as LogHelper;
 use Magento\Framework\Webapi\Rest\Response;
 use Bolt\Boltpay\Helper\Config as ConfigHelper;
-use Magento\Checkout\Model\Session;
 
 /**
  * Class ShippingMethods
@@ -103,11 +102,6 @@ class ShippingMethods implements ShippingMethodsInterface
 	protected $configHelper;
 
 	/**
-	 * @var Session
-	 */
-	protected $checkoutSession;
-
-	/**
 	 *
 	 * @param HookHelper $hookHelper
 	 * @param QuoteFactory $quoteFactory
@@ -136,8 +130,7 @@ class ShippingMethods implements ShippingMethodsInterface
 	    Bugsnag                         $bugsnag,
 	    LogHelper                       $logHelper,
 	    Response                        $response,
-	    ConfigHelper                    $configHelper,
-	    Session                         $checkoutSession
+	    ConfigHelper                    $configHelper
     ){
 	    $this->hookHelper                      = $hookHelper;
 	    $this->cartHelper                      = $cartHelper;
@@ -152,7 +145,6 @@ class ShippingMethods implements ShippingMethodsInterface
 	    $this->logHelper                       = $logHelper;
 	    $this->response                        = $response;
 	    $this->configHelper                    = $configHelper;
-	    $this->checkoutSession                 = $checkoutSession;
     }
 
 	/**
@@ -186,8 +178,6 @@ class ShippingMethods implements ShippingMethodsInterface
 	            );
 	        }
 
-		    $this->checkoutSession->replaceQuote($quote);
-
 	         //Get region id
 	        $region = $this->regionModel->loadByName($shipping_address['region'], $shipping_address['country_code']);
 
@@ -219,6 +209,8 @@ class ShippingMethods implements ShippingMethodsInterface
 
 		    $shippingTaxModel->setAmount($this->cartHelper->getRoundAmount($shippingAddress->getBaseTaxAmount()));
 		    $shippingOptionsModel->setTaxResult($shippingTaxModel);
+
+		    //$this->logHelper->addInfoLog(var_export($shippingOptionsModel, 1));
 
 	        return $shippingOptionsModel;
 	    } catch ( \Exception $e ) {
