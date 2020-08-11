@@ -1,12 +1,23 @@
 <?php
 /**
- * Copyright © 2013-2017 Bolt, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Bolt magento2 plugin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Bolt
+ * @package    Bolt_Boltpay
+ * @copyright  Copyright (c) 2017-2020 Bolt Financial, Inc (https://www.bolt.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
 namespace Bolt\Boltpay\Helper;
 
-use Bolt\Boltpay\Helper\Logger;
-use Bolt\Boltpay\Logger\Logger as BoltLoger;
+use Bolt\Boltpay\Logger\Logger as BoltLogger;
 use Bolt\Boltpay\Helper\Config as ConfigHelper;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
@@ -20,24 +31,23 @@ use Magento\Framework\App\Helper\Context;
 class Log extends AbstractHelper
 {
     /**
-     * @var Logger
+     * @var BoltLogger
      */
-    protected $boltLogger;
+    private $boltLogger;
 
     /**
      * @var ConfigHelper
      */
-    protected $configHelper;
+    private $configHelper;
 
     /**
      * @param Context $context
-     * @param BoltLoger $boltLogger
+     * @param BoltLogger $boltLogger
      * @param ConfigHelper $configHelper
-     * @codeCoverageIgnore
      */
     public function __construct(
         Context $context,
-        BoltLoger $boltLogger,
+        BoltLogger $boltLogger,
         ConfigHelper $configHelper
     ) {
         parent::__construct($context);
@@ -45,16 +55,16 @@ class Log extends AbstractHelper
         $this->configHelper = $configHelper;
     }
 
-	/**
-	 * Add info log
-	 *
-	 * @param mixed $info log message
-	 *
-	 * @return Log
-	 */
+    /**
+     * Add info log
+     *
+     * @param mixed $info log message
+     *
+     * @return Log
+     */
     public function addInfoLog($info)
     {
-        if($this->configHelper->isDebugModeOn()){
+        if ($this->configHelper->isDebugModeOn()) {
             $this->boltLogger->info($info);
         }
         return $this;

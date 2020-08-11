@@ -1,11 +1,26 @@
 /**
+ * Bolt magento2 plugin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Bolt
+ * @package    Bolt_Boltpay
+ * @copyright  Copyright (c) 2017-2020 Bolt Financial, Inc (https://www.bolt.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
  * Replacement for the original file. The union of the files from 2.0.0 ~ 2.2.3 Magento 2 versions.
  * Fixes <iframe> CORS errors in versions 2.0.0-2.1.9.
  * TODO: Check the file 'Magento_PageCache/js/page-cache.js' for changes in any new Magento versions and merge them here
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 define([
     'jquery',
     'domReady',
@@ -21,7 +36,8 @@ define([
      * @param {Number} length - length for need string
      * @returns {String}
      */
-    function generateRandomString(chars, length) {
+    function generateRandomString(chars, length)
+    {
         var result = '';
 
         length = length > 0 ? length : 1;
@@ -43,7 +59,8 @@ define([
         /**
          * @param {jQuery} element - Comment holder
          */
-        (function lookup(element) {
+        (function lookup(element)
+        {
             var iframeHostName;
 
             // prevent cross origin iframe content reading
@@ -307,3 +324,4 @@ define([
         'msgBox': $.mage.msgBox
     };
 });
+

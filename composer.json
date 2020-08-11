@@ -2,22 +2,39 @@
     "name": "boltpay/bolt-magento2",
     "description": "Bolt payment gateway integration",
     "require": {
-        "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
-        "magento/module-sales": "100.*|101.*",
-        "magento/module-checkout": "100.*|101.*",
-        "magento/module-payment": "100.*|101.*",
-        "magento/module-tax": "100.*|101.*",
-        "magento/framework": "100.*|101.*",
-        "magento/magento-composer-installer": "*",
+        "magento/module-sales": "100.*|101.*|102.*|103.*",
+        "magento/module-checkout": "100.*|101.*|102.*|103.*",
+        "magento/module-payment": "100.*|101.*|102.*|103.*",
+        "magento/module-tax": "100.*|101.*|102.*|103.*",
+        "magento/framework": "100.*|101.*|102.*|103.*",
         "bugsnag/bugsnag": "^3.4"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~6.2.0",
+        "mikey179/vfsstream": "^1.6",
+        "magento/magento-coding-standard": "^5.0"
+    },
     "type": "magento2-module",
-    "version": "1.0.2",
+    "version": "2.12.0",
     "license": "MIT",
     "autoload": {
         "files": [ "registration.php" ],
         "psr-4": {
             "Bolt\\Boltpay\\": ""
         }
-    }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+        ],
+        "post-update-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ]
 }

@@ -1,12 +1,21 @@
 <?php
 /**
- * Copyright © 2013-2017 Bold, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Bolt magento2 plugin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Bolt
+ * @package    Bolt_Boltpay
+ * @copyright  Copyright (c) 2017-2020 Bolt Financial, Inc (https://www.bolt.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-
 namespace Bolt\Boltpay\Api\Data;
-
 
 /**
  * Shipping options interface. Shipping options field of the Shipping and Tax response object.
@@ -16,37 +25,47 @@ namespace Bolt\Boltpay\Api\Data;
  */
 interface ShippingOptionsInterface
 {
-	/**
-	 * Get all available shipping options.
-	 *
-	 * @api
-	 * @return \Bolt\Boltpay\Api\Data\ShippingOptionInterface[]
-	 */
-	public function getShippingOptions();
+    /**
+     * Get all available shipping options.
+     *
+     * @api
+     * @return \Bolt\Boltpay\Api\Data\ShippingOptionInterface[]
+     */
+    public function getShippingOptions();
 
-	/**
-	 * Set available shipping options.
-	 *
-	 * @api
-	 * @param \Bolt\Boltpay\Api\Data\ShippingOptionInterface[]
-	 * @return $this
-	 */
-	public function setShippingOptions($shippingOptions);
+    /**
+     * Set available shipping options.
+     *
+     * @api
+     * @param \Bolt\Boltpay\Api\Data\ShippingOptionInterface[]
+     * @return $this
+     */
+    public function setShippingOptions($shippingOptions);
 
-	/**
-	 * Get order tax result.
-	 *
-	 * @api
-	 * @return \Bolt\Boltpay\Api\Data\ShippingTaxInterface
-	 */
-	public function getTaxResult();
+    /**
+     * Get order tax result.
+     *
+     * @api
+     * @return \Bolt\Boltpay\Api\Data\ShippingTaxInterface
+     */
+    public function getTaxResult();
 
-	/**
-	 * Set available shipping options.
-	 *
-	 * @api
-	 * @param \Bolt\Boltpay\Api\Data\ShippingTaxInterface
-	 * @return $this
-	 */
-	public function setTaxResult($taxResult);
+    /**
+     * Set available shipping options.
+     *
+     * @api
+     * @param \Bolt\Boltpay\Api\Data\ShippingTaxInterface
+     * @return $this
+     */
+    public function setTaxResult($taxResult);
+
+    /**
+     * Add amount to shipping options.
+     *
+     * @api
+     * @param int $amount
+     *
+     * @return $this
+     */
+    public function addAmountToShippingOptions($amount);
 }

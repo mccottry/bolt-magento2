@@ -1,4 +1,8 @@
-## Bolt Payment Integration for Magento 2
+## Bolt Checkout Plugin for Magento 2 
+
+[![Latest Stable Version](https://poser.pugx.org/boltpay/bolt-magento2/v/stable.png)](https://packagist.org/packages/boltpay/bolt-magento2)
+[![Build Status](https://circleci.com/gh/BoltApp/bolt-magento2.svg?style=shield)](https://circleci.com/gh/BoltApp/bolt-magento2)
+[![codecov](https://codecov.io/gh/BoltApp/bolt-magento2/branch/master/graph/badge.svg)](https://codecov.io/gh/BoltApp/bolt-magento2)
 
 ### 1. Requirements
 
@@ -13,8 +17,10 @@ commands:
 ```
 $ composer require boltpay/bolt-magento2
 $ php bin/magento setup:upgrade
+$ php bin/magento setup:di:compile
 $ php bin/magento setup:static-content:deploy
 $ php bin/magento cache:clean
+$ php bin/magento cache:flush
 ```
 
 ### 3. Plugin configuration
@@ -47,11 +53,6 @@ used to open the Bolt Payment Popup typically on Shopping cart and product pages
 used to open the Bolt Payment Popup typically on checkout pages
 + **Sandbox Mode**
 setting up testing vs. production execution environment
-+ **Automatic Capture Mode**
-capturing funds configuration
->> **YES** - both authorization and capture are done in a single step
->>
->> **NO** - the funds are captured in a separate request, initiated either from the store admin panel or from the Bolt merchant dashboard
 + **Replace Button Selectors**
 comma separated list of CSS selectors matching the elements to be replaced with Bolt checkout buttons, or Bolt checkout buttons placed alongside them
 >> `no suffix` - the default, inserts the Bolt button in place of the element and removes the element
